@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+    <div class="stage" id="stage">
+
+    <div class="component" data-delay="0">
+        <img src="imgs/gabinete.png" alt="Gabinete">
+    </div>
+
+    <div class="component" data-delay="100">
+        <img src="imgs/placamae.png" alt="Placa-mãe">
+    </div>
+
+    <div class="component" data-delay="200">
+        <img src="imgs/processador.png" alt="CPU">
+    </div>
+
+    <div class="component" data-delay="300">
+        <img src="imgs/placadevideo.png" alt="GPU">
+    </div>
+
+    <div class="component" data-delay="400">
+        <img src="imgs/memoriaram.png" alt="Memória RAM">
+    </div>
+
+</div>
+
+<button id="juntar">Montar PC</button>
+
+<style>
+.stage {
+    position: relative;
+    width: 100%;
+    height: 500px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    place-items: center;
+}
+
+.component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition:
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.5s ease;
+}
+
+.component img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+/* Estado final da animação */
+.component.assembled {
+    transform:
+        translate(var(--move-x), var(--move-y))
+        scale(0.65)
+        rotate(var(--rotation));
+
+    transition-delay: var(--delay);
+}
+</style>
+
+<script src="click.js"></script>
+
+</body>
+</html>
